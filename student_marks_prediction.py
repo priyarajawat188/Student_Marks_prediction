@@ -16,7 +16,10 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 print("Libraries import successfully:-")
+import streamlit as st
 
+st.title("Student Marks Prediction")
+st.write("Welcome to my Machine Learning Project")
 # STEP -: 1
 
 data = {
@@ -183,8 +186,29 @@ print("Scikit-learn version : ", sklearn.__version__)
 
 print("Model saved successfully")
 
-from google.colab import files
+st.header("Predict Your Marks")
 
-# Download the saved model
-files.download("student_marks_model.pkl")
+study_hours = st.number_input(
+    "Study Hours",
+    min_value=0.0,
+    max_value=24.0,
+    value=6.0
+)
+
+attendance = st.number_input(
+    "Attendance (%)",
+    min_value=0.0,
+    max_value=100.0,
+    value=90.0
+)
+
+if st.button("Predict Marks"):
+    input_data = pd.DataFrame({
+        "study_Hours": [study_hours],
+        "Attendance": [attendance]
+    })
+
+    predicted_marks = model.predict(input_data)
+
+    st.success(f"Predicted Marks: {predicted_marks[0]:.2f}")
 
