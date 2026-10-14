@@ -1,4 +1,5 @@
 
+
 import streamlit as st
 import pandas as pd
 import joblib
@@ -11,46 +12,24 @@ st.title("Student Marks Prediction")
 st.write("Welcome to my Machine Learning Project")
 st.header("Predict Your Marks")
 
-# Study Hours input
+# Study Hours dropdown
 st.subheader("Study Hours")
 
-study_hours_slider = st.slider(
-    "Select study hours",
-    min_value=0.0,
-    max_value=24.0,
-    value=6.0,
-    step=0.5,
-    key="study_slider"
+study_hours = st.selectbox(
+    "Select your study hours",
+    options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+             11, 12, 13, 14, 15, 16, 17, 18, 
+             19, 20, 21, 22, 23, 24],
+    index=5
 )
 
-study_hours = st.number_input(
-    "Or enter study hours",
-    min_value=0.0,
-    max_value=24.0,
-    value=study_hours_slider,
-    step=0.5,
-    key="study_input"
-)
-
-# Attendance input
+# Attendance dropdown
 st.subheader("Attendance (%)")
 
-attendance_slider = st.slider(
-    "Select attendance",
-    min_value=0.0,
-    max_value=100.0,
-    value=90.0,
-    step=1.0,
-    key="attendance_slider"
-)
-
-attendance = st.number_input(
-    "Or enter attendance (%)",
-    min_value=0.0,
-    max_value=100.0,
-    value=attendance_slider,
-    step=1.0,
-    key="attendance_input"
+attendance = st.selectbox(
+    "Select your attendance percentage",
+    options=list(range(0, 101, 5)),
+    index=18
 )
 
 # Prediction
