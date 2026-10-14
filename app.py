@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 import pandas as pd
 import pickle
@@ -37,4 +36,3 @@ if st.button("Predict Marks"):
     predicted_marks = model.predict(input_data)
 
     st.success(f"Predicted Marks: {predicted_marks[0]:.2f}")
-```
